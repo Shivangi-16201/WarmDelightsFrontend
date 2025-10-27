@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAnalytics } from '../../contexts/AnalyticsContext';
-import { 
-  getGalleryImages, 
-  uploadGalleryImage, 
-  deleteGalleryImage 
+import {
+  getGalleryImages,
+  uploadGalleryImage,
+  deleteGalleryImage
 } from '../../utils/api';
 import './GalleryManager.css';
 
@@ -60,7 +60,7 @@ const GalleryManager = () => {
 
   const handleUpload = async (event) => {
     event.preventDefault();
-    
+
     if (!selectedFile) {
       alert('Please select an image first');
       return;
@@ -81,11 +81,11 @@ const GalleryManager = () => {
       formData.append('category', imageData.category);
 
       const newImage = await uploadGalleryImage(formData);
-      
+
       setImages(prev => [newImage, ...prev]);
-      trackEvent('image_upload', { 
+      trackEvent('image_upload', {
         title: imageData.title,
-        category: imageData.category 
+        category: imageData.category
       });
 
       // Reset form
@@ -130,6 +130,10 @@ const GalleryManager = () => {
       </div>
     );
   }
+
+
+  console.log("gallery manager: ",`${API_URL}${images[0].imageUrl}`);
+
 
   return (
     <div className="gallery-manager">
@@ -200,8 +204,8 @@ const GalleryManager = () => {
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="upload-btn"
               disabled={uploading || !selectedFile}
             >
@@ -213,7 +217,7 @@ const GalleryManager = () => {
         {/* Gallery Images */}
         <div className="images-section">
           <h2>Gallery Images ({images.length})</h2>
-          
+
           {images.length === 0 ? (
             <div className="empty-gallery">
               <p>No images uploaded yet. Upload your first image above!</p>
@@ -222,20 +226,20 @@ const GalleryManager = () => {
             <div className="images-grid">
               {images.map(image => (
                 <div key={image._id} className="gallery-item">
-                  <img 
-                    src={`${API_URL}${image.imageUrl}`} 
+                  <img
+                    src={`${API_URL}${image.imageUrl}`}
                     alt={image.title}
-                    onError={(e) => {
-                      // Use a simple data URI or existing image instead
-                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZThkNWI1IiAvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkeT0iLjM1ZW0iIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM3YjNmMDAiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4=';
-                    }}
+                    // onError={(e) => {
+                    //   // Use a simple data URI or existing image instead
+                    //   e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZThkNWI1IiAvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkeT0iLjM1ZW0iIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM3YjNmMDAiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4=';
+                    // }}
                   />
                   <div className="image-info">
                     <h4>{image.title}</h4>
                     <p className="image-category">{image.category}</p>
                     <p className="image-description">{image.description}</p>
                     <div className="image-actions">
-                      <button 
+                      <button
                         className="delete-btn"
                         onClick={() => handleDelete(image._id)}
                       >
