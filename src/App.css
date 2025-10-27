@@ -204,20 +204,20 @@ h4, h5, h6 {
 
 .navbar-brand {
   font-weight: 700;
-  color: var(--primary-color) !important;
+  color: #d67b8a !important;
   font-size: 1.8rem;
 }
 
 .navbar-nav .nav-link {
   font-weight: 500;
-  color: var(--dark-color);
+  color: #d67b8a;
   padding: 8px 15px;
   transition: color 0.3s ease;
   position: relative;
 }
 
 .navbar-nav .nav-link:hover {
-  color: var(--primary-color);
+  color: #d67b8a;
 }
 
 .navbar-nav .nav-link::after {
@@ -227,7 +227,7 @@ h4, h5, h6 {
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: var(--primary-color);
+  background-color: #d67b8a;
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }

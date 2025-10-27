@@ -102,7 +102,7 @@ const GalleryManager = () => {
 
     } catch (error) {
       console.error('Upload error:', error);
-      alert(error.message || 'Failed to upload image. Please try again.');
+      alert(error.message || 'Failed to upload image. Please try again..');
     } finally {
       setUploading(false);
     }
@@ -223,7 +223,7 @@ const GalleryManager = () => {
               {images.map(image => (
                 <div key={image._id} className="gallery-item">
                   <img 
-                    src={`http://localhost:5000${image.imageUrl}`} 
+                    src={`${API_URL}${image.imageUrl}`} 
                     alt={image.title}
                     onError={(e) => {
                       // Use a simple data URI or existing image instead
