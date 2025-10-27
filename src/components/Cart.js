@@ -64,14 +64,6 @@ const CartSidebar = ({ show, onHide }) => {
                 return (
                   <ListGroup.Item key={item._id} className="cart-item">
                     <div className="cart-item-content">
-                      <div className="cart-item-image">
-                        <img
-                          src={item.product.image || '/images/placeholder-food.jpg'}
-                          alt={item.product.name}
-                          className="item-image"
-                        />
-                      </div>
-                      
                       <div className="cart-item-details">
                         <h6 className="item-name">{item.product.name}</h6>
                         <p className="item-category">{item.product.category}</p>
