@@ -76,7 +76,7 @@
 }
 
 .quantity-input {
-  border: 2px solid #ffd56f;
+  border: 2px solid #d67b8a;
   border-radius: 8px;
   text-align: center;
   font-weight: 600;
@@ -101,7 +101,7 @@
   font-weight: 700;
   text-align: center;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #ffd56f;
+  border-bottom: 2px solid #d67b8a;
 }
 
 .summary-item {
@@ -297,3 +297,8 @@
   }
 }
 
+.btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: #d67b8a;
+    border-color: #d67b8a;
+}

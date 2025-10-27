@@ -139,11 +139,6 @@ const Cart = () => {
                         <tr key={item._id} className="cart-item">
                           <td>
                             <div className="d-flex align-items-center">
-                              <img
-                                src={item.product.image || '/images/placeholder-food.jpg'}
-                                alt={item.product.name}
-                                className="product-image me-3"
-                              />
                               <div>
                                 <h6 className="product-name mb-1">{item.product.name}</h6>
                                 <Badge 

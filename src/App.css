@@ -125,8 +125,8 @@ h4, h5, h6 {
 
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+  background-color: #d67b8a;
+  border-color: #d67b8a;
   color: white;
   transform: translateY(-2px);
 }
@@ -274,7 +274,7 @@ h4, h5, h6 {
 }
 
 .footer a:hover {
-  color: var(--primary-color);
+  color: #d67b8a;
 }
 
 .footer-social {
