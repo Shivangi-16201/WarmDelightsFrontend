@@ -302,3 +302,8 @@
     background-color: #d67b8a;
     border-color: #d67b8a;
 }
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #e8a5b7 !important;
+}

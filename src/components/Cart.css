@@ -174,9 +174,9 @@
 
 /* Cart Summary */
 .cart-summary {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   padding: 1.5rem;
-  border-top: 2px solid #ffd56f;
+  border-top: 2px solid #ffffff;
 }
 
 .summary-row {
@@ -203,7 +203,7 @@
 }
 
 .summary-divider {
-  border-color: #ffd56f;
+  border-color: #ffffff;
   margin: 1rem 0;
 }
 
