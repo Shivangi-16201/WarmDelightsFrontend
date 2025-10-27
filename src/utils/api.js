@@ -1,5 +1,5 @@
 // API Base URL
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://warmdelightsbackend.onrender.com';
 
 // Helper function for JSON API calls (NO files!)
 const apiRequest = async (endpoint, options = {}) => {
