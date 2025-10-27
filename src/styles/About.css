@@ -1,0 +1,307 @@
+/* About Page Styles */
+.about-page {
+  padding-top: 2rem;
+  background: linear-gradient(to bottom, #ffffff 0%, var(--light-color) 100%);
+  min-height: 100vh;
+}
+
+.about-page .display-4 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-page .lead {
+  color: var(--gray-700);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Story Content */
+.story-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--gray-700);
+  text-align: justify;
+}
+
+.story-content p {
+  margin-bottom: 1.5rem;
+}
+
+.story-content p:first-child::first-letter {
+  font-size: 4rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  float: left;
+  line-height: 1;
+  margin-right: 12px;
+  margin-top: 8px;
+}
+
+/* Value Cards */
+.value-card {
+  border: none;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--light-color) 0%, var(--accent-color) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.value-card .card-title {
+  color: var(--dark-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.value-card .card-text {
+  color: var(--gray-600);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Operating Hours Card */
+.operating-hours-card {
+  background: linear-gradient(135deg, var(--light-color) 0%, #ffffff 100%);
+  border: 3px solid var(--accent-color);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 182, 107, 0.2);
+}
+
+.operating-hours-card h3 {
+  color: var(--dark-color);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.operating-hours-card .text-primary {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e8a5b7!important;
+}
+
+.operating-hours-card .text-muted {
+  font-size: 1.1rem;
+  color: var(--gray-600) !important;
+}
+
+.operating-hours-card .mt-3 {
+  margin-top: 2rem !important;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--accent-color);
+}
+
+.operating-hours-card .mt-3 p {
+  color: var(--gray-700);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Section spacing */
+.about-page .mb-5 {
+  margin-bottom: 4rem !important;
+}
+
+.about-page .py-5 {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 1rem;
+  }
+  
+  .about-page .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .about-page .lead {
+    font-size: 1.1rem;
+  }
+  
+  .story-content {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .story-content p:first-child::first-letter {
+    font-size: 3rem;
+  }
+  
+  .value-card {
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .value-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+  
+  .operating-hours-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .operating-hours-card .text-primary {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-page .display-4 {
+    font-size: 2rem;
+  }
+  
+  .story-content p:first-child::first-letter {
+    font-size: 2.5rem;
+    margin-right: 8px;
+    margin-top: 6px;
+  }
+  
+  .value-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .value-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .operating-hours-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .operating-hours-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .operating-hours-card .text-primary {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animation for about page elements */
+.about-page .display-4 {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.about-page .lead {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.story-content p {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.story-content p:nth-child(1) { animation-delay: 0.3s; }
+.story-content p:nth-child(2) { animation-delay: 0.4s; }
+.story-content p:nth-child(3) { animation-delay: 0.5s; }
+.story-content p:nth-child(4) { animation-delay: 0.6s; }
+
+.value-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.value-card:nth-child(1) { animation-delay: 0.4s; }
+.value-card:nth-child(2) { animation-delay: 0.5s; }
+.value-card:nth-child(3) { animation-delay: 0.6s; }
+
+.operating-hours-card {
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects for value cards */
+.value-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 182, 107, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.value-card:hover::before {
+  left: 100%;
+}
+
+/* Focus states for accessibility */
+.value-card:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .value-card {
+    border: 2px solid var(--dark-color);
+  }
+  
+  .operating-hours-card {
+    border: 3px solid var(--dark-color);
+  }
+  
+  .value-icon {
+    background: var(--dark-color);
+    color: white;
+  }
+}

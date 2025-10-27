@@ -1,0 +1,173 @@
+/* Navbar.css */
+.navbar {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  box-shadow: 0 2px 10px rgba(123, 63, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #d67b8a !important;
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.navbar-brand:hover {
+  color: #d67b8a !important;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(123, 63, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.nav-link {
+  color: #000000 !important;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #d67b8a !important;
+  background-color: rgba(123, 63, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background-color: #d67b8a !important;
+  color: white !important;
+}
+
+.nav-link i {
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+/* Cart badge styles */
+.cart-badge {
+  background: #d67b8a;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-left: 5px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid #fffaf0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Cart link specific styles */
+.nav-link .fa-shopping-cart {
+  font-size: 1.3rem;
+}
+
+/* Responsive styles */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+  }
+  
+  .nav-link {
+    margin: 0.3rem 0;
+    text-align: center;
+  }
+  
+  .cart-badge {
+    position: static;
+    margin-left: 8px;
+    display: inline-flex;
+  }
+}
+
+/* Dropdown styles (if you have dropdowns) */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #000000;
+}
+
+/* Special styling for the brand logo */
+.brand-text {
+  background: linear-gradient(135deg, #d67b8a 0%, #d67b8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile menu animation */
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+/* Login/Register specific styles (if needed) */
+.nav-link.login-link {
+  background: linear-gradient(135deg, #d67b8a 0%, #d67b8a 100%);
+  color: white !important;
+  border: none;
+}
+
+.nav-link.login-link:hover {
+  background: linear-gradient(135deg, #d67b8a 0%, #d67b8a 100%);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure proper spacing for navbar items */
+.navbar-nav {
+  align-items: center;
+}
+
+/* Smooth transitions for all interactive elements */
+.navbar * {
+  transition: all 0.3s ease;
+}
