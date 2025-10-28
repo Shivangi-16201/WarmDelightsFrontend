@@ -41,10 +41,19 @@ const CustomOrder = () => {
           formDataToSend.append(key, formData[key]);
         }
       });
+
+
       
       await createCustomOrder(formDataToSend);
       
       setShowAlert(true);
+
+      const waPhone = "9805189494"; // Replace with your WhatsApp number
+      const waMessage = encodeURIComponent(
+        `Custom Order Request\nName: ${formData.name}\nPhone: ${formData.phone}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
+      );
+      window.open(`https://wa.me/${waPhone}?text=${waMessage}`, "_blank");
+
       setFormData({
         name: '',
         email: '',

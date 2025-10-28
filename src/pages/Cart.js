@@ -217,7 +217,7 @@ const Cart = () => {
         </Col>
 
         <Col lg={4}>
-          <Card className="summary-card sticky-top">
+          <Card className="summary-card">
             <Card.Body>
               <h5 className="summary-title mb-4">
                 <i className="fas fa-receipt me-2"></i>
