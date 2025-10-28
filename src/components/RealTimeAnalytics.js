@@ -62,39 +62,12 @@ const RealTimeAnalytics = () => {
         </div>
 
         <div className="stat-card realtime">
-          <div className="stat-icon">🖼️</div>
-          <div className="stat-content">
-            <h3>{formatNumber(analytics.galleryViews)}</h3>
-            <p>Gallery Views</p>
-            <span className="stat-sub">Image engagements</span>
-          </div>
-        </div>
-
-        <div className="stat-card realtime">
           <div className="stat-icon">📸</div>
           <div className="stat-content">
             <h3>{formatNumber(analytics.imagesUploaded)}</h3>
             <p>Images Uploaded</p>
             <span className="stat-sub">Admin uploads</span>
           </div>
-        </div>
-      </div>
-
-      {/* Top Pages Section */}
-      <div className="top-pages">
-        <h3>📈 Top Pages</h3>
-        <div className="pages-list">
-          {getTopPages().length > 0 ? (
-            getTopPages().map(([page, views], index) => (
-              <div key={page} className="page-item">
-                <span className="page-rank">#{index + 1}</span>
-                <span className="page-name">{page || '/'}</span>
-                <span className="page-views">{formatNumber(views)} views</span>
-              </div>
-            ))
-          ) : (
-            <p className="no-data">No page views yet</p>
-          )}
         </div>
       </div>
 

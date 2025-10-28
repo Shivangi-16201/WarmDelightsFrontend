@@ -78,8 +78,14 @@ export const getOrders = async () => apiRequest('/api/orders');
 export const getOrderById = async (id) => apiRequest(`/api/orders/${id}`);
 export const createOrder = async (orderData) =>
   apiRequest('/api/orders', { method: 'POST', body: JSON.stringify(orderData) });
-export const updateOrderStatus = async (id, status) =>
-  apiRequest(`/api/orders/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) });
+  export const updateOrderStatus = async (id, statusObj) =>
+    apiRequest(`/api/orders/${id}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        status: statusObj.status,
+        paymentStatus: statusObj.paymentStatus
+      })
+    });
 
 // Gallery API functions
 export const getGalleryImages = async () => apiRequest('/api/gallery');
