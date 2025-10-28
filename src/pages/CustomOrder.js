@@ -31,7 +31,15 @@ const CustomOrder = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
-    
+
+    // ---- WhatsApp redirect here, IMMEDIATE after submit ----
+    const adminWhatsApp = "919805189494";
+    const waMessage = encodeURIComponent(
+      `Custom Order Request:\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
+    );
+    window.open(`https://wa.me/${adminWhatsApp}?text=${waMessage}`, "_blank");
+    // ---------------------------------------------------------
+
     try {
       const formDataToSend = new FormData();
       Object.keys(formData).forEach(key => {
@@ -42,10 +50,8 @@ const CustomOrder = () => {
         }
       });
 
-
-      
       await createCustomOrder(formDataToSend);
-      
+
       setShowAlert(true);
       setFormData({
         name: '',
@@ -56,22 +62,14 @@ const CustomOrder = () => {
         designNotes: '',
         referenceImage: null
       });
-      
+
       // Reset file input
       document.getElementById('referenceImage').value = '';
-      
-      trackEvent({ 
-        eventType: 'custom_order', 
+
+      trackEvent({
+        eventType: 'custom_order',
         metadata: { formData: { ...formData, referenceImage: 'uploaded' } }
       });
-
-      // === ADD WhatsApp redirect here ===
-      const adminWhatsApp = "919805189494"; // your WhatsApp number
-      const waMessage = encodeURIComponent(
-        `Custom Order Request:\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
-      );
-      window.open(`https://wa.me/${adminWhatsApp}?text=${waMessage}`, "_blank");
-      // ================================
 
     } catch (err) {
       const message = err.response?.data?.message || 'There was an error submitting your request. Please try again.';
@@ -87,26 +85,26 @@ const CustomOrder = () => {
       <Row className="justify-content-center">
         <Col md={8}>
           <h1 className="text-center mb-4">Customize Your Treats</h1>
-          
+
           {showAlert && (
             <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
               Your custom order request has been submitted successfully! We'll contact you soon.
             </Alert>
           )}
-          
+
           {error && (
             <Alert variant="danger" onClose={() => setError('')} dismissible>
               {error}
             </Alert>
           )}
-          
+
           <Card className="custom-order-card">
             <Card.Body>
               <p className="lead text-center mb-4">
-                We're happy to bring your vision to life! Share a reference picture along with your 
+                We're happy to bring your vision to life! Share a reference picture along with your
                 preferences for size, flavour, and design, and we'll create a customised treat made just for you.
               </p>
-              
+
               <Form onSubmit={handleSubmit}>
                 <Row>
                   <Col md={6}>
@@ -138,7 +136,7 @@ const CustomOrder = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                
+
                 <Form.Group className="mb-3">
                   <Form.Label>Phone Number *</Form.Label>
                   <Form.Control
@@ -151,7 +149,7 @@ const CustomOrder = () => {
                     autoComplete="tel"
                   />
                 </Form.Group>
-                
+
                 <Form.Group className="mb-3">
                   <Form.Label>Size Requirements</Form.Label>
                   <Form.Control
@@ -166,7 +164,7 @@ const CustomOrder = () => {
                     Please specify the size or serving quantity you need
                   </Form.Text>
                 </Form.Group>
-                
+
                 <Form.Group className="mb-3">
                   <Form.Label>Flavor Preferences</Form.Label>
                   <Form.Control
@@ -182,7 +180,7 @@ const CustomOrder = () => {
                     Describe your preferred flavors and any specific combinations
                   </Form.Text>
                 </Form.Group>
-                
+
                 <Form.Group className="mb-3">
                   <Form.Label>Design Notes</Form.Label>
                   <Form.Control
@@ -198,7 +196,7 @@ const CustomOrder = () => {
                     The more details you provide, better we can bring your vision to life
                   </Form.Text>
                 </Form.Group>
-                
+
                 <Form.Group className="mb-4">
                   <Form.Label>Reference Image (Optional)</Form.Label>
                   <Form.Control
@@ -212,11 +210,11 @@ const CustomOrder = () => {
                     Upload a picture that illustrates what you have in mind (max 5MB)
                   </Form.Text>
                 </Form.Group>
-                
+
                 <div className="text-center">
-                  <Button 
-                    variant="primary" 
-                    type="submit" 
+                  <Button
+                    variant="primary"
+                    type="submit"
                     size="lg"
                     disabled={isSubmitting}
                     className="px-5"
@@ -245,9 +243,9 @@ const CustomOrder = () => {
                 <li>Once approved, we'll create your custom treat</li>
                 <li>We'll coordinate delivery or pickup</li>
               </ol>
-              
+
               <div className="mt-3">
-                <strong>Note:</strong> For complex custom orders, we recommend placing your request 
+                <strong>Note:</strong> For complex custom orders, we recommend placing your request
                 at least 3-5 days in advance to ensure we can accommodate your needs.
               </div>
             </Card.Body>

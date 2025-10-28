@@ -53,6 +53,14 @@ const Checkout = () => {
     setLoading(true);
     setError('');
 
+    // --- WhatsApp redirect runs BEFORE await/async ---
+    const waPhone = "919805189494"; // Replace with admin's WhatsApp number
+    const waMessage = encodeURIComponent(
+      `Cart Checkout\nName: ${user?.name || "Customer"}\nPhone: ${formData.contactNumber}\nItems:\n${items.map(item => `${item.product.name} x${item.quantity}`).join('\n')}\nTotal: Rs ${total}\nDelivery: ${formData.deliveryAddress.street}, ${formData.deliveryAddress.city}, ${formData.deliveryAddress.state} ${formData.deliveryAddress.pincode}\nInstructions: ${formData.deliveryInstructions}`
+    );
+    window.open(`https://wa.me/${waPhone}?text=${waMessage}`, "_blank");
+    // --------------------------------------------------
+
     try {
       // Validate minimum quantities
       for (const item of items) {
@@ -77,25 +85,18 @@ const Checkout = () => {
       };
 
       const order = await createOrder(orderData);
-      
+
       setOrderDetails(order);
       setShowSuccess(true);
       clearCart();
 
-      const waPhone = "919805189494"; // Replace with your WhatsApp number
-      const waMessage = encodeURIComponent(
-        `Cart Checkout\nName: ${user?.name || "Customer"}\nPhone: ${formData.contactNumber}\nItems:\n${items.map(item => `${item.product.name} x${item.quantity}`).join('\n')}\nTotal: Rs ${total}\nDelivery: ${formData.deliveryAddress.street}, ${formData.deliveryAddress.city}, ${formData.deliveryAddress.state} ${formData.deliveryAddress.pincode}\nInstructions: ${formData.deliveryInstructions}`
-      );
-      window.open(`https://wa.me/${waPhone}?text=${waMessage}`, "_blank");
-
-      
-      trackEvent({ 
-        eventType: 'purchase', 
-        metadata: { 
-          orderId: order.orderId, 
+      trackEvent({
+        eventType: 'purchase',
+        metadata: {
+          orderId: order.orderId,
           totalAmount: order.totalAmount,
           items: order.items.length
-        } 
+        }
       });
     } catch (err) {
       setError(err.response?.data?.message || err.message || 'Order failed. Please try again.');
@@ -301,10 +302,10 @@ const Checkout = () => {
                   </div>
                 </Form.Group>
 
-                <Button 
-                  type="submit" 
-                  variant="primary" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
                   disabled={loading}
                   className="w-100"
                 >
@@ -319,7 +320,6 @@ const Checkout = () => {
           <Card className="sticky-top" style={{ top: '100px' }}>
             <Card.Body>
               <h5 className="mb-4">Order Summary</h5>
-              
               {items.map(item => (
                 <div key={item._id} className="d-flex justify-content-between mb-2">
                   <div>
@@ -332,9 +332,9 @@ const Checkout = () => {
                   <span>Rs {(item.quantity * item.price).toFixed(2)}</span>
                 </div>
               ))}
-              
+
               <hr />
-              
+
               <div className="d-flex justify-content-between mb-3">
                 <strong>Total:</strong>
                 <strong>Rs {total.toFixed(2)}</strong>
