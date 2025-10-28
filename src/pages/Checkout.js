@@ -53,11 +53,23 @@ const Checkout = () => {
     setLoading(true);
     setError('');
 
-    // --- WhatsApp redirect runs BEFORE await/async ---
-    const waPhone = "919805189494"; // Replace with admin's WhatsApp number
+    // --- WhatsApp message block with attractive formatting/delivery fee logic ---
+    const waPhone = "919805189494";
+    const deliveryThreshold = 1000;
+    const deliveryCharge = 150;
+    const isDeliveryCharged = total < deliveryThreshold;
+    const grandTotal = isDeliveryCharged ? total + deliveryCharge : total;
+
     const waMessage = encodeURIComponent(
-      `Cart Checkout\nName: ${user?.name || "Customer"}\nPhone: ${formData.contactNumber}\nItems:\n${items.map(item => `${item.product.name} x${item.quantity}`).join('\n')}\nTotal: Rs ${total}\nDelivery: ${formData.deliveryAddress.street}, ${formData.deliveryAddress.city}, ${formData.deliveryAddress.state} ${formData.deliveryAddress.pincode}\nInstructions: ${formData.deliveryInstructions}`
+      `🛒 *Warm Delights - Order Confirmation*\n----------------------\n👤 Name: ${user?.name || "Customer"}\n📞 Phone: ${formData.contactNumber}\n\n🍰 *Items Ordered:*\n${items.map(item => `• ${item.product.name} x${item.quantity}`).join('\n')}\n\n💰 Subtotal: Rs ${total}\n${
+        isDeliveryCharged 
+          ? `🚚 Delivery Charge: Rs ${deliveryCharge} (applied below Rs 1000)` 
+          : `🚚 Delivery: Free (orders over Rs 1000)`
+      }\n\n*Grand Total:* Rs ${grandTotal}\n\n🏠 *Delivery Address:* ${formData.deliveryAddress.street}, ${formData.deliveryAddress.city}, ${formData.deliveryAddress.state} ${formData.deliveryAddress.pincode}\n\n📝 *Instructions:* ${
+        formData.deliveryInstructions?.trim() ? formData.deliveryInstructions : "None"
+      }\n----------------------\nThank you for choosing Warm Delights!`
     );
+
     window.open(`https://wa.me/${waPhone}?text=${waMessage}`, "_blank");
     // --------------------------------------------------
 
