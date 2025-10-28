@@ -48,7 +48,7 @@ const CustomOrder = () => {
       
       setShowAlert(true);
 
-      const waPhone = "9805189494"; // Replace with your WhatsApp number
+      const waPhone = "919805189494"; // Replace with your WhatsApp number
       const waMessage = encodeURIComponent(
         `Custom Order Request\nName: ${formData.name}\nPhone: ${formData.phone}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
       );

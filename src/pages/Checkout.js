@@ -82,7 +82,7 @@ const Checkout = () => {
       setShowSuccess(true);
       clearCart();
 
-      const waPhone = "9805189494"; // Replace with your WhatsApp number
+      const waPhone = "919805189494"; // Replace with your WhatsApp number
       const waMessage = encodeURIComponent(
         `Cart Checkout\nName: ${user?.name || "Customer"}\nPhone: ${formData.contactNumber}\nItems:\n${items.map(item => `${item.product.name} x${item.quantity}`).join('\n')}\nTotal: Rs ${total}\nDelivery: ${formData.deliveryAddress.street}, ${formData.deliveryAddress.city}, ${formData.deliveryAddress.state} ${formData.deliveryAddress.pincode}\nInstructions: ${formData.deliveryInstructions}`
       );
