@@ -47,13 +47,6 @@ const CustomOrder = () => {
       await createCustomOrder(formDataToSend);
       
       setShowAlert(true);
-
-      const waPhone = "919805189494"; // Replace with your WhatsApp number
-      const waMessage = encodeURIComponent(
-        `Custom Order Request\nName: ${formData.name}\nPhone: ${formData.phone}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
-      );
-      window.open(`https://wa.me/${waPhone}?text=${waMessage}`, "_blank");
-
       setFormData({
         name: '',
         email: '',
@@ -71,6 +64,15 @@ const CustomOrder = () => {
         eventType: 'custom_order', 
         metadata: { formData: { ...formData, referenceImage: 'uploaded' } }
       });
+
+      // === ADD WhatsApp redirect here ===
+      const adminWhatsApp = "919805189494"; // your WhatsApp number
+      const waMessage = encodeURIComponent(
+        `Custom Order Request:\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSize: ${formData.size}\nFlavor: ${formData.flavor}\nNotes: ${formData.designNotes}`
+      );
+      window.open(`https://wa.me/${adminWhatsApp}?text=${waMessage}`, "_blank");
+      // ================================
+
     } catch (err) {
       const message = err.response?.data?.message || 'There was an error submitting your request. Please try again.';
       setError(message);
