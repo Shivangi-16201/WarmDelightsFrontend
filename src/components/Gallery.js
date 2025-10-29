@@ -92,10 +92,6 @@ const Gallery = () => {
                   loading="lazy"
                 />
               </div>
-              
-              <div className="gallery-info">
-                <h3 className="gallery-title">{item.title}</h3>
-              </div>
             </div>
           ))
         )}
