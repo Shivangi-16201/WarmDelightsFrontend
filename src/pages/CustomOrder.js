@@ -195,19 +195,9 @@ const CustomOrder = () => {
                   <Form.Text className="text-muted">
                     The more details you provide, better we can bring your vision to life
                   </Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-4">
-                  <Form.Label>Reference Image (Optional)</Form.Label>
-                  <Form.Control
-                    type="file"
-                    id="referenceImage"
-                    name="referenceImage"
-                    onChange={handleChange}
-                    accept="image/*"
-                  />
+                  <br />
                   <Form.Text className="text-muted">
-                    Upload a picture that illustrates what you have in mind (max 5MB)
+                    Upload a picture on whatsapp that illustrates what you have in mind
                   </Form.Text>
                 </Form.Group>
 
