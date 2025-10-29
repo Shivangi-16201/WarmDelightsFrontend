@@ -40,6 +40,17 @@ const CustomOrder = () => {
     window.open(`https://wa.me/${adminWhatsApp}?text=${waMessage}`, "_blank");
     // ---------------------------------------------------------
 
+    // -- Add this right after WhatsApp redirect, inside handleSubmit --
+    await fetch('/api/analytics/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'whatsapp_order',
+        page: '/custom-order',
+        metadata: { name: formData.name, phone: formData.phone }
+      })
+    });
+
     try {
       const formDataToSend = new FormData();
       Object.keys(formData).forEach(key => {

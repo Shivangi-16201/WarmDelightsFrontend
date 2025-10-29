@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAnalytics } from '../contexts/AnalyticsContext';
 import './RealTimeAnalytics.css';
 
 const RealTimeAnalytics = () => {
   const { analytics, resetAnalytics } = useAnalytics();
+  const [whatsAppOrdersCount, setWhatsAppOrdersCount] = useState(0);
+
+    useEffect(() => {
+      const fetchWhatsAppCount = async () => {
+        const res = await fetch('/api/analytics/whatsapp-orders/count');
+        const data = await res.json();
+        setWhatsAppOrdersCount(data.count);
+      };
+      fetchWhatsAppCount();
+      const interval = setInterval(fetchWhatsAppCount, 15000); // auto-refresh every 15s
+      return () => clearInterval(interval);
+    }, []);
 
   const formatNumber = (num) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
